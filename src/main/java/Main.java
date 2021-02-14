@@ -1,7 +1,8 @@
-import commands.Command;
+package main.java;
+
+import main.java.commands.Command;
 
 import java.io.*;
-import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;

@@ -1,4 +1,4 @@
-package commands;
+package main.java.commands;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;

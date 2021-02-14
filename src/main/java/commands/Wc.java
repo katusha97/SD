@@ -1,11 +1,11 @@
-package commands;
+package main.java.commands;
 
 import exceptions.WrongArgumentsException;
 
 import java.io.*;
 import java.util.List;
 
-public class Wc extends AbstractCommand{
+public class Wc extends AbstractCommand {
 
     public Wc(List<String> s) {
         super(s, "wc");

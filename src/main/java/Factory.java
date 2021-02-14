@@ -1,4 +1,6 @@
-import commands.*;
+package main.java;
+
+import main.java.commands.*;
 
 import java.util.HashMap;
 import java.util.List;

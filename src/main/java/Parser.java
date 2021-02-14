@@ -1,5 +1,7 @@
-import commands.Command;
+package main.java;
+
 import exceptions.EmptyCommandException;
+import main.java.commands.Command;
 
 import java.util.ArrayList;
 import java.util.List;

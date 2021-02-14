@@ -1,4 +1,4 @@
-import commands.Echo;
+import main.java.commands.Echo;
 import org.junit.jupiter.api.Test;
 
 import java.io.*;

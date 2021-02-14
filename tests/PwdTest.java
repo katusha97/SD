@@ -1,12 +1,11 @@
 import exceptions.WrongArgumentsException;
-import commands.Pwd;
+import main.java.commands.Pwd;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
