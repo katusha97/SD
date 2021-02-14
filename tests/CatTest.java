@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 
 class CatTest {
 
@@ -19,7 +21,7 @@ class CatTest {
             Cat c = new Cat(new ArrayList<>());
             InputStream ans = c.call( new ByteArrayInputStream(string.getBytes()));
             String text = getString(ans);
-            assert (text.equals(string));
+            assertEquals(text, string);
         }
 
         {
@@ -33,7 +35,7 @@ class CatTest {
             InputStream ans = c.call(InputStream.nullInputStream());
             f.delete();
             String text = getString(ans);
-            assert (text.equals(string));
+            assertEquals(text, string);
         }
     }
 }
