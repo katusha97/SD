@@ -29,7 +29,7 @@ java {
 }
 
 tasks.compileJava {
-    options.release.set(14)
+    options.release.set(13)
 }
 
 tasks.test {
