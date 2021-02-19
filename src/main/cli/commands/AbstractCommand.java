@@ -1,6 +1,6 @@
-package main.java.commands;
+package cli.commands;
 
-import main.java.Arguments;
+import cli.Arguments;
 
 public abstract class AbstractCommand implements Command {
 

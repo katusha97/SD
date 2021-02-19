@@ -1,7 +1,7 @@
-package main.java.commands;
+package cli.commands;
 
-import main.java.Arguments;
-import main.java.exceptions.WrongArgumentsException;
+import cli.Arguments;
+import cli.exceptions.WrongArgumentsException;
 
 import java.io.InputStream;
 import java.util.Map;

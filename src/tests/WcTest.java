@@ -1,19 +1,14 @@
-import main.java.Arguments;
-import main.java.commands.Pwd;
-import main.java.commands.Wc;
-import main.java.exceptions.NoSuchFileOrDirectoryException;
-import main.java.exceptions.WrongArgumentsException;
+import cli.Arguments;
+import cli.commands.Wc;
+import cli.exceptions.NoSuchFileOrDirectoryException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import javax.swing.plaf.basic.BasicScrollPaneUI;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class WcTest {
 

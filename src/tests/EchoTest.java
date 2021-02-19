@@ -1,5 +1,5 @@
-import main.java.Arguments;
-import main.java.commands.Echo;
+import cli.Arguments;
+import cli.commands.Echo;
 import org.junit.jupiter.api.Test;
 
 import java.io.*;

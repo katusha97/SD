@@ -1,22 +1,13 @@
-package main.java;
-
-import main.java.exceptions.EmptyCommandException;
-import main.java.exceptions.NoSuchFileOrDirectoryException;
+import cli.Factory;
+import cli.Parser;
+import cli.exceptions.EmptyCommandException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.function.Executable;
-
-import java.io.InputStream;
-import java.util.HashMap;
-import java.util.Map;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class ParserTest {
 
     @Test
-    void parse() throws EmptyCommandException {
-
+    void parse() {
         {
             Factory factory = new Factory();
             Parser parser = new Parser(factory);
@@ -24,6 +15,5 @@ class ParserTest {
             Assertions.assertThrows(EmptyCommandException.class,
                     () -> parser.parse(string));
         }
-
     }
 }

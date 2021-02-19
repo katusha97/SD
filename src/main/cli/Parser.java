@@ -1,17 +1,17 @@
-package main.java;
+package cli;
 
-import main.java.exceptions.EmptyCommandException;
-import main.java.commands.Command;
+import cli.exceptions.EmptyCommandException;
+import cli.commands.Command;
 
 import java.util.*;
 
-class Parser {
+public class Parser {
 
-    Parser(final Factory fac) {
+    public Parser(final Factory fac) {
         this.factory = fac;
     }
 
-    List<Command> parse(final String s) throws EmptyCommandException {
+    public List<Command> parse(final String s) throws EmptyCommandException {
         List<Command> commandList = new ArrayList<>();
         String[] parsed = s.split("\\|");
         for (int i = 0; i < parsed.length; i++) {

@@ -1,5 +1,5 @@
-import main.java.Arguments;
-import main.java.commands.Cat;
+import cli.Arguments;
+import cli.commands.Cat;
 import org.junit.jupiter.api.Test;
 import java.io.*;
 import java.util.ArrayList;

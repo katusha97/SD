@@ -1,6 +1,6 @@
-package main.java;
+package cli;
 
-import main.java.commands.Command;
+import cli.commands.Command;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -19,11 +19,12 @@ public class Executor {
     public String execute(final String inputString, InputStream inputStream) throws Exception {
         Factory factory = new Factory();
         Parser parser = new Parser(factory);
-        Map<String, String> varDict = new HashMap<>();
         List<Command> commandList = parser.parse(inputString);
         for (Command command : commandList) {
             inputStream = command.call(inputStream, varDict);
         }
         return getString(inputStream);
     }
+
+    private final Map<String, String> varDict = new HashMap<>();
 }

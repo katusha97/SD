@@ -1,6 +1,6 @@
-package main.java;
+package cli;
 
-import main.java.commands.*;
+import cli.commands.*;
 
 import java.util.HashMap;
 import java.util.Map;

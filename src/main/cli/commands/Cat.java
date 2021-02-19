@@ -1,10 +1,9 @@
-package main.java.commands;
+package cli.commands;
 
-import main.java.Arguments;
+import cli.Arguments;
 
 import java.io.FileInputStream;
 import java.io.InputStream;
-import java.util.List;
 import java.util.Map;
 
 public class Cat extends AbstractCommand{

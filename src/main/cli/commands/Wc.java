@@ -1,14 +1,13 @@
-package main.java.commands;
+package cli.commands;
 
-import main.java.Arguments;
-import main.java.exceptions.NoSuchFileOrDirectoryException;
+import cli.Arguments;
+import cli.exceptions.NoSuchFileOrDirectoryException;
 
 import java.io.*;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class Wc extends AbstractCommand {

@@ -1,4 +1,4 @@
-package main.java.exceptions;
+package cli.exceptions;
 
 public class WrongArgumentsException extends Exception {
     public WrongArgumentsException(final String message){

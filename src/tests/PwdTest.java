@@ -1,6 +1,6 @@
-import main.java.Arguments;
-import main.java.exceptions.WrongArgumentsException;
-import main.java.commands.Pwd;
+import cli.Arguments;
+import cli.exceptions.WrongArgumentsException;
+import cli.commands.Pwd;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
