@@ -3,7 +3,6 @@ package main.java;
 import main.java.commands.*;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
 
@@ -17,6 +16,7 @@ public class Factory {
         map.put("pwd", Pwd::new);
         map.put("wc", Wc::new);
         map.put("exit", Exit::new);
+        map.put("assignment", Assignment::new);
     }
 
     public Command create(final String name, final Arguments args) {

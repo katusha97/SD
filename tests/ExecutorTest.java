@@ -2,8 +2,6 @@ import main.java.Executor;
 import org.junit.jupiter.api.Test;
 
 import java.io.*;
-import java.nio.file.Files;
-
 
 class ExecutorTest {
 
@@ -67,6 +65,13 @@ class ExecutorTest {
             Executor executor = new Executor();
             String res = executor.execute(s, System.in);
             assert (res.equals("7"));
+        }
+
+        {
+            String s = "pwd | cat test.txt | wc | n=90 | echo $n";
+            Executor executor = new Executor();
+            String res = executor.execute(s, System.in);
+            assert (res.equals("90"));
         }
 
 //        {

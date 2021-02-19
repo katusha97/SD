@@ -25,15 +25,13 @@ class Parser {
             }
             token = token.strip();
             if (checkIfVariable(token)) {
-                addToVarDict(token);
+                String[] splited = token.split("=");
+                List<String> args = new ArrayList<>();
+                args.add(splited[0].strip());
+                args.add(splited[1].strip());
+                commandList.add(factory.create("assignment", new Arguments(args)));
             }else {
                 String[] bySpace = token.split(" ");
-//                if (bySpace.length == 0) {
-//                    throw new EmptyCommandException("empty command on " + i
-//                            + "-th part of pipeline");
-//                }
-
-
                 String name;
                 List<String> args = new ArrayList<>();
                 name = bySpace[0];
@@ -44,11 +42,6 @@ class Parser {
             }
         }
         return commandList;
-    }
-
-    void addToVarDict(String token) {
-        String[] splited = token.split("=");
-        varDict.put(splited[0].strip(), splited[1].strip());
     }
 
     boolean checkIfVariable(String token) {
@@ -64,9 +57,4 @@ class Parser {
     }
 
     private final Factory factory;
-    private final Map<String, String> varDict = new HashMap<>();
-
-    Map<String, String> getVarDict() {
-        return varDict;
-    }
 }
