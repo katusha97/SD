@@ -1,12 +1,14 @@
 package main.java.commands;
 
-import exceptions.WrongArgumentsException;
+import main.java.exceptions.WrongArgumentsException;
 
 import java.io.InputStream;
+import java.util.Map;
 
 public interface Command {
 
-    InputStream call(InputStream input) throws Exception, WrongArgumentsException;
+    InputStream call(InputStream input, Map<String, String> dictVal) throws Exception,
+            WrongArgumentsException;
 
     String getName();
 }

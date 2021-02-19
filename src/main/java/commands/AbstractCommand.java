@@ -1,11 +1,11 @@
 package main.java.commands;
 
-import java.util.List;
+import main.java.Arguments;
 
-public abstract class AbstractCommand implements Command{
+public abstract class AbstractCommand implements Command {
 
-    AbstractCommand(List<String> s, String name) {
-        args = s;
+    AbstractCommand(Arguments args, String name) {
+        this.args = args;
         this.name = name;
     }
 
@@ -14,6 +14,6 @@ public abstract class AbstractCommand implements Command{
         return name;
     }
 
-    protected final List<String> args;
+    protected final Arguments args;
     private final String name;
 }

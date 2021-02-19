@@ -1,18 +1,22 @@
 package main.java.commands;
 
-import exceptions.WrongArgumentsException;
+import main.java.Arguments;
+import main.java.exceptions.WrongArgumentsException;
 
 import java.io.InputStream;
 import java.util.List;
+import java.util.Map;
 
-public class Exit extends AbstractCommand{
+public class Exit extends AbstractCommand {
 
-    public Exit(List<String> s) {
+    public Exit(final Arguments s) {
         super(s, "exit");
     }
 
     @Override
-    public InputStream call(InputStream input) throws Exception, WrongArgumentsException {
+    public InputStream call(final InputStream input, final Map<String, String> dictVal)
+            throws Exception, WrongArgumentsException {
+        System.exit(0);
         return null;
     }
 }

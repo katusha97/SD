@@ -1,7 +1,9 @@
+import main.java.Arguments;
 import main.java.commands.Cat;
 import org.junit.jupiter.api.Test;
 import java.io.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -18,8 +20,9 @@ class CatTest {
     void call() throws Exception {
         String string = "aba\ncaba\teee";
         {
-            Cat c = new Cat(new ArrayList<>());
-            InputStream ans = c.call( new ByteArrayInputStream(string.getBytes()));
+
+            Cat c = new Cat(new Arguments(new ArrayList<>()));
+            InputStream ans = c.call(new ByteArrayInputStream(string.getBytes()), new HashMap<>());
             String text = getString(ans);
             assertEquals(text, string);
         }
@@ -31,8 +34,8 @@ class CatTest {
             writer.write(string);
             writer.close();
             l.add(f.getName());
-            Cat c = new Cat(l);
-            InputStream ans = c.call(InputStream.nullInputStream());
+            Cat c = new Cat(new Arguments(l));
+            InputStream ans = c.call(InputStream.nullInputStream(), new HashMap<>());
             f.delete();
             String text = getString(ans);
             assertEquals(text, string);

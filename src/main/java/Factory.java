@@ -19,9 +19,9 @@ public class Factory {
         map.put("exit", Exit::new);
     }
 
-    public Command create(String name, List<String> args) {
+    public Command create(final String name, final Arguments args) {
         return map.get(name).apply(args);
     }
 
-    private final Map<String, Function<List<String>, Command>> map;
+    private final Map<String, Function<Arguments, Command>> map;
 }

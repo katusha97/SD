@@ -1,7 +1,7 @@
-package exceptions;
+package main.java.exceptions;
 
 public class WrongArgumentsException extends Exception {
-    public WrongArgumentsException(String message){
+    public WrongArgumentsException(final String message){
         super(message);
     }
 }
