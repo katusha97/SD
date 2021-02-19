@@ -3,10 +3,7 @@ package main.java;
 import main.java.exceptions.EmptyCommandException;
 import main.java.commands.Command;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 class Parser {
 
@@ -31,12 +28,22 @@ class Parser {
                 args.add(splited[1].strip());
                 commandList.add(factory.create("assignment", new Arguments(args)));
             }else {
-                String[] bySpace = token.split(" ");
-                String name;
+                String name = "";
+                int j = 0;
+                while (j < token.length() && token.charAt(j) != ' '){
+                    name += token.charAt(j);
+                    j++;
+                }
+                String sub = "";
+                if (j < token.length()) {
+                    sub = token.substring(j + 1);
+                }
                 List<String> args = new ArrayList<>();
-                name = bySpace[0];
-                for (int j = 1; j < bySpace.length; j++) {
-                    args.add(bySpace[j]);
+                if (checkIfSingleQuotes(sub)) {
+                    args.add(sub.substring(1, sub.length() - 1));
+                } else if (!sub.equals("")) {
+                    String[] bySpace = sub.split(" ");
+                    Collections.addAll(args, bySpace);
                 }
                 commandList.add(factory.create(name, new Arguments(args)));
             }

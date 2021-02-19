@@ -74,6 +74,13 @@ class ExecutorTest {
             assert (res.equals("90"));
         }
 
+        {
+            String s = "echo 'echo 7'";
+            Executor executor = new Executor();
+            String res = executor.execute(s, System.in);
+            assert (res.equals("echo 7"));
+        }
+
 //        {
 //            String s = "echo '$(echo upg)'";
 //            Executor executor = new Executor();
