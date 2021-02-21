@@ -1,3 +1,5 @@
+package cli.commands;
+
 import cli.Arguments;
 import cli.commands.Cat;
 import org.junit.jupiter.api.Test;

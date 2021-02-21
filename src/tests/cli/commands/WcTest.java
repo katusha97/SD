@@ -1,3 +1,5 @@
+package cli.commands;
+
 import cli.Arguments;
 import cli.commands.Wc;
 import cli.exceptions.NoSuchFileOrDirectoryException;

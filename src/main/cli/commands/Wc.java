@@ -50,7 +50,7 @@ public class Wc extends AbstractCommand {
     }
 
     @Override
-    public InputStream call(final InputStream input, final Map<String, String> dictVal) throws IOException, NoSuchFileOrDirectoryException {
+    public InputStream call(final InputStream input, final Map<String, String> dictVal) throws Exception {
         if (args.size() == 0) {
             return new ByteArrayInputStream(getAns(input).getBytes());
         }

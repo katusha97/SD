@@ -1,3 +1,5 @@
+package cli;
+
 import cli.Factory;
 import cli.Parser;
 import cli.exceptions.EmptyCommandException;

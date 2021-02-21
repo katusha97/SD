@@ -1,3 +1,5 @@
+package cli.commands;
+
 import cli.Arguments;
 import cli.exceptions.WrongArgumentsException;
 import cli.commands.Pwd;
