@@ -17,6 +17,7 @@ public class Factory {
         map.put("wc", Wc::new);
         map.put("exit", Exit::new);
         map.put("assignment", Assignment::new);
+        map.put("script", Script::new);
     }
 
     public Command create(final String name, final Arguments args) {

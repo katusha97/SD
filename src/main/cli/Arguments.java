@@ -1,7 +1,5 @@
 package cli;
 
-import cli.commands.Command;
-import cli.exceptions.EmptyCommandException;
 import cli.exceptions.WrongArgumentsException;
 
 import java.util.List;

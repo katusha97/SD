@@ -28,6 +28,15 @@ public class Parser {
                 args.add(splited[0].strip());
                 args.add(splited[1].strip());
                 commandList.add(factory.create("assignment", new Arguments(args)));
+            } else if (token.length() > 2 && ((token.charAt(0) == '.' && token.charAt(1) == '/')
+                    || token.charAt(0) == '/')) {
+                NameAndArgs nameAndArgs = splitNameAndArgs(token);
+                String name = nameAndArgs.name;
+                List<String> args = new ArrayList<>();
+                args.add(name);
+                List<String> parsedArgs = parseArgs(nameAndArgs.args);
+                args.addAll(parsedArgs);
+                commandList.add(factory.create("script", new Arguments(args)));
             } else {
                 NameAndArgs nameAndArgs = splitNameAndArgs(token);
                 String name = nameAndArgs.name;

@@ -14,6 +14,10 @@ public abstract class AbstractCommand implements Command {
         return name;
     }
 
+    public Arguments getArgs() {
+        return args;
+    }
+
     protected final Arguments args;
     private final String name;
 }

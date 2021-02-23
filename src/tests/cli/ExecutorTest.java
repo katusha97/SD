@@ -1,9 +1,13 @@
 package cli;
 
 import cli.Executor;
+import cli.commands.Script;
 import org.junit.jupiter.api.Test;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
