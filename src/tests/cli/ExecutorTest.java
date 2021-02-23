@@ -1,7 +1,6 @@
 package cli;
 
 import cli.Executor;
-import cli.commands.Script;
 import org.junit.jupiter.api.Test;
 
 import java.io.*;
@@ -63,7 +62,7 @@ class ExecutorTest {
         {
             String s = "echo | pwd";
             Executor executor = new Executor();
-            String res = executor.execute(s,System.in);
+            String res = executor.execute(s, System.in);
             String test = System.getProperty("user.dir");
             assertEquals(res, test);
         }
@@ -112,12 +111,12 @@ class ExecutorTest {
 
         f.delete();
     }
-    
+
     @Test
     void bigTest() throws Exception {
         String s = "echo 'a b' n 'd f g'   'g'    k   k k";
         Executor executor = new Executor();
         String res = executor.execute(s, System.in);
-        assertEquals(res,"a b n d f g g k k k");
+        assertEquals(res, "a b n d f g g k k k");
     }
 }

@@ -1,8 +1,8 @@
 package cli.commands;
 
 import cli.Arguments;
-import cli.commands.Cat;
 import org.junit.jupiter.api.Test;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,18 +11,18 @@ import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-
 class CatTest {
 
     static String getString(InputStream input) {
-        return new BufferedReader(new InputStreamReader(input)).lines().collect(Collectors.joining("\n"));
+        return new BufferedReader(new InputStreamReader(input))
+                .lines()
+                .collect(Collectors.joining("\n"));
     }
 
     @Test
     void call() throws Exception {
         String string = "aba\ncaba\teee";
         {
-
             Cat c = new Cat(new Arguments(new ArrayList<>()));
             InputStream ans = c.call(new ByteArrayInputStream(string.getBytes()), new HashMap<>());
             String text = getString(ans);

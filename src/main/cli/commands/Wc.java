@@ -10,7 +10,7 @@ import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Wc extends AbstractCommand {
+class Wc extends AbstractCommand {
 
     public Wc(final Arguments s) {
         super(s, "wc");
@@ -50,7 +50,8 @@ public class Wc extends AbstractCommand {
     }
 
     @Override
-    public InputStream call(final InputStream input, final Map<String, String> dictVal) throws Exception {
+    public InputStream call(final InputStream input, final Map<String, String> dictVal)
+            throws Exception {
         if (args.size() == 0) {
             return new ByteArrayInputStream(getAns(input).getBytes());
         }
@@ -69,7 +70,13 @@ public class Wc extends AbstractCommand {
             totalByte += Integer.parseInt(splitCurr[2]);
         }
         if (args.size() > 1) {
-            res.append(totalLine).append(" ").append(totalWord).append(" ").append(totalByte).append(" ").append("total");
+            res.append(totalLine)
+                    .append(" ")
+                    .append(totalWord)
+                    .append(" ")
+                    .append(totalByte)
+                    .append(" ")
+                    .append("total");
         }
         return new ByteArrayInputStream(res.toString().getBytes());
     }

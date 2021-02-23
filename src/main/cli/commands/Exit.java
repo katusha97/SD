@@ -6,7 +6,7 @@ import cli.exceptions.WrongArgumentsException;
 import java.io.InputStream;
 import java.util.Map;
 
-public class Exit extends AbstractCommand {
+class Exit extends AbstractCommand {
 
     public Exit(final Arguments s) {
         super(s, "exit");

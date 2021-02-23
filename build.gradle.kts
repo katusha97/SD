@@ -1,6 +1,7 @@
 plugins {
     java
     application
+    checkstyle
 }
 
 group = "org.example"
@@ -35,3 +36,8 @@ tasks.compileJava {
 tasks.test {
     useJUnitPlatform()
 }
+
+
+
+
+

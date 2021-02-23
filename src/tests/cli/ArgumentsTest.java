@@ -59,8 +59,7 @@ class ArgumentsTest {
         Arguments args = new Arguments(Collections.singletonList(arg));
         Map<String, String> vars = new HashMap<>();
         vars.put("x", "7");
-        assertEquals("hello " + System.getProperty("user.dir") + "7",
-                args.get(0, vars));
+        assertEquals("hello " + System.getProperty("user.dir") + "7", args.get(0, vars));
     }
 
     @Test

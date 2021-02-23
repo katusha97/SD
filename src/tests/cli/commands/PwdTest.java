@@ -17,7 +17,9 @@ import java.util.stream.Collectors;
 class PwdTest {
 
     static String getString(InputStream input) {
-        return new BufferedReader(new InputStreamReader(input)).lines().collect(Collectors.joining("\n"));
+        return new BufferedReader(new InputStreamReader(input))
+                .lines()
+                .collect(Collectors.joining("\n"));
     }
 
     @Test
@@ -27,14 +29,16 @@ class PwdTest {
             String test = System.getProperty("user.dir");
             InputStream ans = p.call(InputStream.nullInputStream(), new HashMap<>());
             String text = getString(ans);
-            assert(text.equals(test));
+            assert (text.equals(test));
         }
 
         {
             List<String> testList = new ArrayList<>();
             testList.add("3");
             Pwd p = new Pwd(new Arguments(testList));
-            Assertions.assertThrows(WrongArgumentsException.class, () -> p.call(InputStream.nullInputStream(), new HashMap<>()));
+            Assertions.assertThrows(
+                    WrongArgumentsException.class,
+                    () -> p.call(InputStream.nullInputStream(), new HashMap<>()));
         }
     }
 }

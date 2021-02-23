@@ -6,21 +6,22 @@ import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.Map;
 
-public class Echo extends AbstractCommand {
+class Echo extends AbstractCommand {
 
     public Echo(final Arguments s) {
         super(s, "echo");
     }
 
     @Override
-    public InputStream call(final InputStream input, final Map<String, String> dictVal) throws Exception {
-        String string = "";
+    public InputStream call(final InputStream input, final Map<String, String> dictVal)
+            throws Exception {
+        StringBuilder string = new StringBuilder();
         for (int i = 0; i < args.size(); i++) {
-            string += args.get(i, dictVal) ;
+            string.append(args.get(i, dictVal));
             if (args.size() - i > 1) {
-                string += " ";
+                string.append(" ");
             }
         }
-        return new ByteArrayInputStream(string.getBytes());
+        return new ByteArrayInputStream(string.toString().getBytes());
     }
 }

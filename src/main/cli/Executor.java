@@ -1,8 +1,7 @@
 package cli;
 
 import cli.commands.Command;
-import cli.exceptions.EmptyCommandException;
-import cli.exceptions.WrongArgumentsException;
+import cli.commands.Factory;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -12,6 +11,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+/**
+ * Класс, который получает запрос в строке и выполняет его.
+ */
 public class Executor {
 
     public Executor() {
@@ -22,10 +24,18 @@ public class Executor {
         this.varDict = varDict;
     }
 
-    static String getString(final InputStream input) {
-        return new BufferedReader(new InputStreamReader(input)).lines().collect(Collectors.joining("\n"));
+    private static String getString(final InputStream input) {
+        return new BufferedReader(new InputStreamReader(input))
+                .lines()
+                .collect(Collectors.joining("\n"));
     }
 
+    /**
+     * @param inputString Входной запрос.
+     * @param inputStream Входной поток.
+     * @return Результат выполнения запроса.
+     * @throws Exception
+     */
     public String execute(final String inputString, InputStream inputStream) throws Exception {
         Factory factory = new Factory();
         Parser parser = new Parser(factory);

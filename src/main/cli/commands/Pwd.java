@@ -7,7 +7,7 @@ import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.Map;
 
-public class Pwd extends AbstractCommand {
+class Pwd extends AbstractCommand {
 
     public Pwd(final Arguments s) {
         super(s, "pwd");

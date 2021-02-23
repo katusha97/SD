@@ -15,7 +15,9 @@ import java.util.stream.Collectors;
 class WcTest {
 
     static String getString(InputStream input) {
-        return new BufferedReader(new InputStreamReader(input)).lines().collect(Collectors.joining("\n"));
+        return new BufferedReader(new InputStreamReader(input))
+                .lines()
+                .collect(Collectors.joining("\n"));
     }
 
     @Test
@@ -67,7 +69,8 @@ class WcTest {
             List<String> testList = new ArrayList<>();
             testList.add("3");
             Wc c = new Wc(new Arguments(testList));
-            Assertions.assertThrows(NoSuchFileOrDirectoryException.class,
+            Assertions.assertThrows(
+                    NoSuchFileOrDirectoryException.class,
                     () -> c.call(InputStream.nullInputStream(), new HashMap<>()));
         }
     }

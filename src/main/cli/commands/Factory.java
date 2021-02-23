@@ -1,12 +1,14 @@
-package cli;
+package cli.commands;
 
-import cli.commands.*;
+import cli.Arguments;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
 
-
+/**
+ * Фабрика для создания и добавления команд.
+ */
 public class Factory {
 
     public Factory() {
@@ -20,6 +22,11 @@ public class Factory {
         map.put("script", Script::new);
     }
 
+    /**
+     * @param name Имя команды
+     * @param args Агрументы команды
+     * @return Созданную команду
+     */
     public Command create(final String name, final Arguments args) {
         return map.get(name).apply(args);
     }

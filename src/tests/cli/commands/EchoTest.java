@@ -10,11 +10,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
-
 class EchoTest {
 
     static String getString(InputStream input) {
-        return new BufferedReader(new InputStreamReader(input)).lines().collect(Collectors.joining("\n"));
+        return new BufferedReader(new InputStreamReader(input))
+                .lines()
+                .collect(Collectors.joining("\n"));
     }
 
     @Test
@@ -36,6 +37,5 @@ class EchoTest {
             String text = getString(ans);
             assert (text.equals("3 hello"));
         }
-
     }
 }

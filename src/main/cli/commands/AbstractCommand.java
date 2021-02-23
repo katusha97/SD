@@ -2,7 +2,7 @@ package cli.commands;
 
 import cli.Arguments;
 
-public abstract class AbstractCommand implements Command {
+abstract class AbstractCommand implements Command {
 
     AbstractCommand(Arguments args, String name) {
         this.args = args;
@@ -14,7 +14,8 @@ public abstract class AbstractCommand implements Command {
         return name;
     }
 
-    public Arguments getArgs() {
+    @Override
+    public Arguments getArguments() {
         return args;
     }
 

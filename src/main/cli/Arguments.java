@@ -5,15 +5,11 @@ import cli.exceptions.WrongArgumentsException;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Класс, который хранит информацию об аргументах команды. Главная функция - get. Она обрабатывает
+ * ситуации с переменными, одинарными и двойными кавычками.
+ */
 public class Arguments {
-
-    public Arguments(List<String> args) {
-        this.args = args;
-    }
-
-    public int size() {
-        return args.size();
-    }
 
     private String execute(String arg, Map<String, String> varDict) throws Exception {
         Executor executor = new Executor(varDict);
@@ -36,12 +32,12 @@ public class Arguments {
                 }
 
                 if (arg.charAt(i) == '(') {
-                    int right_bound = arg.indexOf(')', i + 1);
-                    if (right_bound == -1) {
+                    int rightBound = arg.indexOf(')', i + 1);
+                    if (rightBound == -1) {
                         throw new WrongArgumentsException(") is missing");
                     }
-                    ans.append(execute(arg.substring(i + 1, right_bound), varDict));
-                    i = right_bound + 1;
+                    ans.append(execute(arg.substring(i + 1, rightBound), varDict));
+                    i = rightBound + 1;
                     continue;
                 }
 
@@ -59,8 +55,7 @@ public class Arguments {
                 if (varDict.containsKey(name)) {
                     ans.append(varDict.get(name));
                 }
-            }
-            else {
+            } else {
                 ans.append(arg.charAt(i));
                 i++;
             }
@@ -68,6 +63,24 @@ public class Arguments {
         return ans.toString();
     }
 
+    public Arguments(List<String> args) {
+        this.args = args;
+    }
+
+    /**
+     * @return Вспомогательная функция, которая возвращает количество аргуметнов команды.
+     */
+    public int size() {
+        return args.size();
+    }
+
+    /**
+     * @param i       индекс аргумента, который мы хотим получить
+     * @param varDict - словарь, в котором по названию переменной хранится его значение на текущий
+     *                момент.
+     * @return строку - аргумент на i-м месте
+     * @throws Exception
+     */
     public String get(int i, Map<String, String> varDict) throws Exception {
         String curr = args.get(i);
         if (curr.charAt(0) == '\'') {

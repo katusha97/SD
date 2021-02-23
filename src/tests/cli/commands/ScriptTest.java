@@ -15,7 +15,9 @@ import static org.junit.jupiter.api.Assertions.*;
 class ScriptTest {
 
     static String getString(InputStream input) {
-        return new BufferedReader(new InputStreamReader(input)).lines().collect(Collectors.joining("\n"));
+        return new BufferedReader(new InputStreamReader(input))
+                .lines()
+                .collect(Collectors.joining("\n"));
     }
 
     @Test
@@ -25,7 +27,7 @@ class ScriptTest {
         BufferedWriter writer = new BufferedWriter(new FileWriter(f));
         writer.write("#!/bin/sh\necho 'Test for scripts!' $x $1");
         writer.close();
-        Runtime.getRuntime().exec("chmod +x "+ f.getAbsolutePath()).waitFor();
+        Runtime.getRuntime().exec("chmod +x " + f.getAbsolutePath()).waitFor();
         list.add(f.getAbsolutePath());
         list.add("2");
         Map<String, String> dict = new HashMap<>();
