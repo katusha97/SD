@@ -135,6 +135,14 @@ public class Arguments {
         return substitute(args.get(i), varDict);
     }
 
+    /**
+     * Этот метод возвращает аргументы, которые нужны для данного ключа.
+     * @param key Имя ключа.
+     * @param varDict - словарь, в котором по названию переменной хранится его значение на текущий
+     *      *                момент.
+     * @return Аргументы по ключу.
+     * @throws Exception
+     */
     public Optional<List<String>> get(String key, Map<String, String> varDict) throws Exception {
         List<String> curr = keyValue.get(key);
         if (curr == null) {

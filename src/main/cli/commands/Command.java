@@ -35,5 +35,8 @@ public interface Command {
      */
     Arguments getArguments();
 
+    /**
+     * @return По ключу возвращает количество аргументов, которые этот ключ должен принять.
+     */
     Map<String, Integer> getKeyValueNumber();
 }

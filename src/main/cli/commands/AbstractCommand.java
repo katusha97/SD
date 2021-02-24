@@ -10,7 +10,6 @@ import java.util.Map;
 
 abstract class AbstractCommand implements Command {
 
-    // должен принимать список строк, а не Arguments, и конструировать Arguments на основе мапы из getKeyValueNumber
     AbstractCommand(List<String> args, String name) throws WrongArgumentsException {
         this.name = name;
         this.args = new Arguments(args, getKeyValueNumber());
