@@ -1,18 +1,19 @@
 package cli.commands;
 
-import cli.Arguments;
 import cli.exceptions.NoSuchFileOrDirectoryException;
+import cli.exceptions.WrongArgumentsException;
 
 import java.io.*;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 class Wc extends AbstractCommand {
 
-    public Wc(final Arguments s) {
+    public Wc(final List<String> s) throws WrongArgumentsException {
         super(s, "wc");
     }
 
@@ -79,5 +80,10 @@ class Wc extends AbstractCommand {
                     .append("total");
         }
         return new ByteArrayInputStream(res.toString().getBytes());
+    }
+
+    @Override
+    public Map<String, Integer> getKeyValueNumber() {
+        return null;
     }
 }

@@ -1,15 +1,23 @@
 package cli.commands;
 
 import cli.Arguments;
+import cli.exceptions.WrongArgumentsException;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
 
 /**
  * Фабрика для создания и добавления команд.
  */
+
+
 public class Factory {
+
+    private interface ThrowingCtor {
+        Command create(List<String> l) throws WrongArgumentsException;
+    }
 
     public Factory() {
         this.map = new HashMap<>();
@@ -27,9 +35,9 @@ public class Factory {
      * @param args Агрументы команды
      * @return Созданную команду
      */
-    public Command create(final String name, final Arguments args) {
-        return map.get(name).apply(args);
+    public Command create(final String name, final List<String> args) throws WrongArgumentsException {
+        return map.get(name).create(args);
     }
 
-    private final Map<String, Function<Arguments, Command>> map;
+    private final Map<String, ThrowingCtor> map;
 }

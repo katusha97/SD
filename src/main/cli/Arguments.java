@@ -2,8 +2,7 @@ package cli;
 
 import cli.exceptions.WrongArgumentsException;
 
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Класс, который хранит информацию об аргументах команды. Главная функция - get. Она обрабатывает
@@ -63,8 +62,39 @@ public class Arguments {
         return ans.toString();
     }
 
-    public Arguments(List<String> args) {
-        this.args = args;
+    public Arguments(List<String> args, Map<String, Integer> getKeyValueNumber) throws WrongArgumentsException {
+        List<String> argsUsually = new ArrayList<>();
+        Map<String, List<String>> keyValue = new HashMap<>();
+        int i = 0;
+        while (i < args.size()){
+            if (!args.get(i).matches("-[a-zA-Z]")) {
+                argsUsually.add(args.get(i));
+                i++;
+                continue;
+            }
+            String currKey = args.get(i);
+            if (!getKeyValueNumber.containsKey(currKey)) {
+                argsUsually.add(args.get(i));
+                i++;
+                continue;
+            }
+            List<String> argsForCurrKey = new ArrayList<>();
+            int count = getKeyValueNumber.get(currKey);
+            int j = i + 1;
+            int k = 0;
+            while (k < count && j < args.size()) {
+                argsForCurrKey.add(args.get(j));
+                k++;
+                j++;
+            }
+            if (argsForCurrKey.size() != count) {
+                throw new WrongArgumentsException("missing arguments");
+            }
+            keyValue.put(currKey, argsForCurrKey);
+            i = j;
+        }
+        this.args = argsUsually;
+        this.keyValue = keyValue;
     }
 
     /**
@@ -72,6 +102,26 @@ public class Arguments {
      */
     public int size() {
         return args.size();
+    }
+
+    private String substitute(String s, Map<String, String> varDict) throws Exception {
+        if (s.charAt(0) == '\'') {
+            return s.substring(1, s.length() - 1);
+        }
+        if (s.charAt(0) == '$') {
+            if (s.length() == 1) {
+                return s;
+            }
+            String sub = s.substring(1);
+            if (!varDict.containsKey(sub)) {
+                return "";
+            }
+            return varDict.get(sub);
+        }
+        if (s.charAt(0) == '"') {
+            return parseDoubleQuote(s.substring(1, s.length() - 1), varDict);
+        }
+        return s;
     }
 
     /**
@@ -82,25 +132,21 @@ public class Arguments {
      * @throws Exception
      */
     public String get(int i, Map<String, String> varDict) throws Exception {
-        String curr = args.get(i);
-        if (curr.charAt(0) == '\'') {
-            return curr.substring(1, curr.length() - 1);
+        return substitute(args.get(i), varDict);
+    }
+
+    public Optional<List<String>> get(String key, Map<String, String> varDict) throws Exception {
+        List<String> curr = keyValue.get(key);
+        if (curr == null) {
+            return Optional.empty();
         }
-        if (curr.charAt(0) == '$') {
-            if (curr.length() == 1) {
-                return curr;
-            }
-            String sub = curr.substring(1);
-            if (!varDict.containsKey(sub)) {
-                return "";
-            }
-            return varDict.get(sub);
+        List<String> ans = new ArrayList<>();
+        for (String s : curr) {
+            ans.add(substitute(s, varDict));
         }
-        if (curr.charAt(0) == '"') {
-            return parseDoubleQuote(curr.substring(1, curr.length() - 1), varDict);
-        }
-        return curr;
+        return Optional.of(ans);
     }
 
     private final List<String> args;
+    private final Map<String, List<String>> keyValue;
 }

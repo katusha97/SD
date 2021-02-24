@@ -1,6 +1,5 @@
 package cli.commands;
 
-import cli.Arguments;
 import cli.exceptions.WrongArgumentsException;
 
 import java.io.InputStream;
@@ -10,7 +9,7 @@ import java.util.Map;
 
 class Script extends AbstractCommand {
 
-    public Script(Arguments args) {
+    public Script(final List<String> args) throws WrongArgumentsException {
         super(args, "script");
     }
 
@@ -26,5 +25,10 @@ class Script extends AbstractCommand {
         Process p = pb.start();
         p.waitFor();
         return p.getInputStream();
+    }
+
+    @Override
+    public Map<String, Integer> getKeyValueNumber() {
+        return null;
     }
 }

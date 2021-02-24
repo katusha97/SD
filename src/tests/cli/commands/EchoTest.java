@@ -22,7 +22,7 @@ class EchoTest {
     void call() throws Exception {
         String string = "aba\ncaba\teee";
         {
-            Echo e = new Echo(new Arguments(new ArrayList<>()));
+            Echo e = new Echo(new ArrayList<>());
             InputStream ans = e.call(InputStream.nullInputStream(), new HashMap<>());
             String text = getString(ans);
             assert (text.equals(""));
@@ -32,7 +32,7 @@ class EchoTest {
             List<String> testList = new ArrayList<>();
             testList.add("3");
             testList.add("hello");
-            Echo e = new Echo(new Arguments(testList));
+            Echo e = new Echo(testList);
             InputStream ans = e.call(new ByteArrayInputStream(string.getBytes()), new HashMap<>());
             String text = getString(ans);
             assert (text.equals("3 hello"));

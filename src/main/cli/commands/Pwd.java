@@ -1,15 +1,15 @@
 package cli.commands;
 
-import cli.Arguments;
 import cli.exceptions.WrongArgumentsException;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.util.List;
 import java.util.Map;
 
 class Pwd extends AbstractCommand {
 
-    public Pwd(final Arguments s) {
+    public Pwd(final List<String> s) throws WrongArgumentsException {
         super(s, "pwd");
     }
 
@@ -20,5 +20,10 @@ class Pwd extends AbstractCommand {
             throw new WrongArgumentsException("too many arguments");
         }
         return new ByteArrayInputStream(System.getProperty("user.dir").getBytes());
+    }
+
+    @Override
+    public Map<String, Integer> getKeyValueNumber() {
+        return null;
     }
 }

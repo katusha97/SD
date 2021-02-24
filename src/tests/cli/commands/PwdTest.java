@@ -25,7 +25,7 @@ class PwdTest {
     @Test
     void call() throws WrongArgumentsException {
         {
-            Pwd p = new Pwd(new Arguments(new ArrayList<>()));
+            Pwd p = new Pwd(new ArrayList<>());
             String test = System.getProperty("user.dir");
             InputStream ans = p.call(InputStream.nullInputStream(), new HashMap<>());
             String text = getString(ans);
@@ -35,7 +35,7 @@ class PwdTest {
         {
             List<String> testList = new ArrayList<>();
             testList.add("3");
-            Pwd p = new Pwd(new Arguments(testList));
+            Pwd p = new Pwd(testList);
             Assertions.assertThrows(
                     WrongArgumentsException.class,
                     () -> p.call(InputStream.nullInputStream(), new HashMap<>()));

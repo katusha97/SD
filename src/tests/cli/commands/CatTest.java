@@ -23,7 +23,7 @@ class CatTest {
     void call() throws Exception {
         String string = "aba\ncaba\teee";
         {
-            Cat c = new Cat(new Arguments(new ArrayList<>()));
+            Cat c = new Cat(new ArrayList<>());
             InputStream ans = c.call(new ByteArrayInputStream(string.getBytes()), new HashMap<>());
             String text = getString(ans);
             assertEquals(text, string);
@@ -36,7 +36,7 @@ class CatTest {
             writer.write(string);
             writer.close();
             l.add(f.getName());
-            Cat c = new Cat(new Arguments(l));
+            Cat c = new Cat(l);
             InputStream ans = c.call(InputStream.nullInputStream(), new HashMap<>());
             f.delete();
             String text = getString(ans);

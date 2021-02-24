@@ -24,7 +24,7 @@ class WcTest {
     void call() throws Exception {
         String string = "Hello world!\n";
         {
-            Wc w = new Wc(new Arguments(new ArrayList<>()));
+            Wc w = new Wc(new ArrayList<>());
             InputStream input = new ByteArrayInputStream(string.getBytes());
             InputStream ans = w.call(input, new HashMap<>());
             String text = getString(ans);
@@ -38,7 +38,7 @@ class WcTest {
             writer.write(string);
             writer.close();
             list.add(f.getName());
-            Wc w = new Wc(new Arguments(list));
+            Wc w = new Wc(list);
             InputStream ans = w.call(InputStream.nullInputStream(), new HashMap<>());
             f.delete();
             String text = getString(ans);
@@ -57,7 +57,7 @@ class WcTest {
             writer2.close();
             list.add(f1.getName());
             list.add(f2.getName());
-            Wc w = new Wc(new Arguments(list));
+            Wc w = new Wc(list);
             InputStream ans = w.call(InputStream.nullInputStream(), new HashMap<>());
             f1.delete();
             f2.delete();
@@ -68,7 +68,7 @@ class WcTest {
         {
             List<String> testList = new ArrayList<>();
             testList.add("3");
-            Wc c = new Wc(new Arguments(testList));
+            Wc c = new Wc(testList);
             Assertions.assertThrows(
                     NoSuchFileOrDirectoryException.class,
                     () -> c.call(InputStream.nullInputStream(), new HashMap<>()));

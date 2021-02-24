@@ -1,14 +1,15 @@
 package cli.commands;
 
-import cli.Arguments;
+import cli.exceptions.WrongArgumentsException;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.util.List;
 import java.util.Map;
 
 class Echo extends AbstractCommand {
 
-    public Echo(final Arguments s) {
+    public Echo(final List<String> s) throws WrongArgumentsException {
         super(s, "echo");
     }
 
@@ -23,5 +24,10 @@ class Echo extends AbstractCommand {
             }
         }
         return new ByteArrayInputStream(string.toString().getBytes());
+    }
+
+    @Override
+    public Map<String, Integer> getKeyValueNumber() {
+        return null;
     }
 }

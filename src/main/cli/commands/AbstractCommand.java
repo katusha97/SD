@@ -1,12 +1,19 @@
 package cli.commands;
 
 import cli.Arguments;
+import cli.exceptions.WrongArgumentsException;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 abstract class AbstractCommand implements Command {
 
-    AbstractCommand(Arguments args, String name) {
-        this.args = args;
+    // должен принимать список строк, а не Arguments, и конструировать Arguments на основе мапы из getKeyValueNumber
+    AbstractCommand(List<String> args, String name) throws WrongArgumentsException {
         this.name = name;
+        this.args = new Arguments(args, getKeyValueNumber());
     }
 
     @Override

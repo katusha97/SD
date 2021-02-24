@@ -4,6 +4,7 @@ import cli.Arguments;
 import cli.exceptions.WrongArgumentsException;
 
 import java.io.InputStream;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -33,4 +34,6 @@ public interface Command {
      * @return аргументы команды
      */
     Arguments getArguments();
+
+    Map<String, Integer> getKeyValueNumber();
 }

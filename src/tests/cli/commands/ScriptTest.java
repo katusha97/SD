@@ -32,7 +32,7 @@ class ScriptTest {
         list.add("2");
         Map<String, String> dict = new HashMap<>();
         dict.put("x", "7");
-        Script s = new Script(new Arguments(list));
+        Script s = new Script(list);
         InputStream ans = s.call(InputStream.nullInputStream(), dict);
         f.delete();
         String text = getString(ans);
