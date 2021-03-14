@@ -1,22 +1,15 @@
 package cli.commands;
 
-import cli.Arguments;
-import cli.commands.Echo;
 import org.junit.jupiter.api.Test;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.stream.Collectors;
+
+import static cli.Utils.getString;
 
 class EchoTest {
-
-    static String getString(InputStream input) {
-        return new BufferedReader(new InputStreamReader(input))
-                .lines()
-                .collect(Collectors.joining("\n"));
-    }
 
     @Test
     void call() throws Exception {

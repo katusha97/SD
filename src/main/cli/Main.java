@@ -2,6 +2,9 @@ package cli;
 
 import java.util.Scanner;
 
+import static cli.Utils.getString;
+
+
 public class Main {
 
     public static void main(final String[] args) throws Exception {
@@ -9,8 +12,11 @@ public class Main {
         Executor executor = new Executor();
         while (scanner.hasNext()) {
             String inputString = scanner.nextLine();
-            String res = executor.execute(inputString, System.in);
-            System.out.println(res);
+            try {
+                System.out.println(getString(executor.execute(inputString, System.in)));
+            } catch (Exception e) {
+                System.err.println(e.getMessage());
+            }
         }
     }
 }

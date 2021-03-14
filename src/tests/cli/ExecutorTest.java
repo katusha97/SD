@@ -1,14 +1,11 @@
 package cli;
 
-import cli.Executor;
 import org.junit.jupiter.api.Test;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static cli.Utils.getString;
 
 class ExecutorTest {
 
@@ -23,90 +20,90 @@ class ExecutorTest {
         {
             String s = "pwd | wc";
             Executor executor = new Executor();
-            String res = executor.execute(s, System.in);
+            InputStream res = executor.execute(s, System.in);
             String test = System.getProperty("user.dir");
             int countLine = test.split("\n").length;
             int countWord = test.split(" ").length;
             int countByte = countLine + test.length();
-            assertEquals(res, countLine + " " + countWord + " " + countByte);
+            assertEquals(getString(res), countLine + " " + countWord + " " + countByte);
         }
 
         {
             String s = "cat test.txt | wc";
             Executor executor = new Executor();
-            String res = executor.execute(s, System.in);
-            assertEquals(res, "1 2 13");
+            InputStream res = executor.execute(s, System.in);
+            assertEquals(getString(res), "1 2 13");
         }
 
         {
             String s = "cat | wc";
             Executor executor = new Executor();
-            String res = executor.execute(s, new ByteArrayInputStream("hello".getBytes()));
-            assertEquals(res, "1 1 6");
+            InputStream res = executor.execute(s, new ByteArrayInputStream("hello".getBytes()));
+            assertEquals(getString(res), "1 1 6");
         }
 
         {
             String s = "echo testing echo";
             Executor executor = new Executor();
-            String res = executor.execute(s, System.in);
-            assertEquals(res, "testing echo");
+            InputStream res = executor.execute(s, System.in);
+            assertEquals(getString(res), "testing echo");
         }
 
         {
             String s = "cat test.txt | echo 4";
             Executor executor = new Executor();
-            String res = executor.execute(s, System.in);
-            assertEquals(res, "4");
+            InputStream res = executor.execute(s, System.in);
+            assertEquals(getString(res), "4");
         }
 
         {
             String s = "echo | pwd";
             Executor executor = new Executor();
-            String res = executor.execute(s, System.in);
+            InputStream res = executor.execute(s, System.in);
             String test = System.getProperty("user.dir");
-            assertEquals(res, test);
+            assertEquals(getString(res), test);
         }
 
         {
             String s = "cat test.txt | x=7 | echo $x";
             Executor executor = new Executor();
-            String res = executor.execute(s, System.in);
-            assertEquals(res, "7");
+            InputStream res = executor.execute(s, System.in);
+            assertEquals(getString(res), "7");
         }
 
         {
             String s = "pwd | cat test.txt | wc | n=90 | echo $n";
             Executor executor = new Executor();
-            String res = executor.execute(s, System.in);
-            assertEquals(res, "90");
+            InputStream res = executor.execute(s, System.in);
+            assertEquals(getString(res), "90");
         }
 
         {
             String s = "echo 'echo 7'";
             Executor executor = new Executor();
-            String res = executor.execute(s, System.in);
-            assertEquals(res, "echo 7");
+            InputStream res = executor.execute(s, System.in);
+            assertEquals(getString(res), "echo 7");
         }
 
         {
             String s = "echo \"echo 7\"";
             Executor executor = new Executor();
-            String res = executor.execute(s, System.in);
-            assertEquals(res, "echo 7");
+            InputStream res = executor.execute(s, System.in);
+            assertEquals(getString(res), "echo 7");
         }
 
         {
             String s = "echo \"$echo 7\"";
             Executor executor = new Executor();
-            String res = executor.execute(s, System.in);
-            assertEquals(" 7", res);
+            InputStream res = executor.execute(s, System.in);
+            assertEquals(" 7", getString(res));
         }
 
         {
             String s = "echo \"$(echo 7)\"";
             Executor executor = new Executor();
-            String res = executor.execute(s, System.in);
-            assertEquals(res, "7");
+            InputStream res = executor.execute(s, System.in);
+            assertEquals("7", getString(res));
         }
 
         f.delete();
@@ -116,7 +113,7 @@ class ExecutorTest {
     void bigTest() throws Exception {
         String s = "echo 'a b' n 'd f g'   'g'    k   k k";
         Executor executor = new Executor();
-        String res = executor.execute(s, System.in);
-        assertEquals(res, "a b n d f g g k k k");
+        InputStream res = executor.execute(s, System.in);
+        assertEquals(getString(res), "a b n d f g g k k k");
     }
 }

@@ -10,7 +10,7 @@ import java.util.Map;
 class Pwd extends AbstractCommand {
 
     public Pwd(final List<String> s) throws WrongArgumentsException {
-        super(s, "pwd");
+        super(s, Commands.pwd);
     }
 
     @Override
@@ -20,10 +20,5 @@ class Pwd extends AbstractCommand {
             throw new WrongArgumentsException("too many arguments");
         }
         return new ByteArrayInputStream(System.getProperty("user.dir").getBytes());
-    }
-
-    @Override
-    public Map<String, Integer> getKeyValueNumber() {
-        return null;
     }
 }

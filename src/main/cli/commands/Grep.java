@@ -10,7 +10,7 @@ import java.util.*;
 public class Grep extends AbstractCommand{
 
     Grep(List<String> args) throws WrongArgumentsException {
-        super(args, "grep");
+        super(args, Commands.grep);
     }
 
     @Override

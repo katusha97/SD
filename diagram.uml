@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>cli</OriginalElement>
+  <nodes>
+    <node x="2219.912445506371" y="539.0">cli.commands.AbstractCommand</node>
+    <node x="1977.473968812878" y="963.0">cli.commands.Factory</node>
+    <node x="92.44815979208533" y="1074.0">cli.Parser</node>
+    <node x="415.518875754527" y="1441.0">cli.Main</node>
+    <node x="150.6624455063711" y="975.5">cli.Parser.NameAndArgs</node>
+    <node x="2804.912445506371" y="766.0">cli.commands.Wc</node>
+    <node x="2398.912445506371" y="789.0">cli.commands.Cat</node>
+    <node x="774.912445506371" y="789.0">cli.commands.Echo</node>
+    <node x="120.92720908786032" y="0.0">cli.Arguments</node>
+    <node x="1180.9124455063711" y="789.0">cli.commands.Pwd</node>
+    <node x="501.9124455063711" y="789.0">cli.commands.Factory.ThrowingCtor</node>
+    <node x="3210.912445506371" y="789.0">cli.commands.Exit</node>
+    <node x="1992.9124455063711" y="789.0">cli.commands.Assignment</node>
+    <node x="378.268875754527" y="1330.0">cli.Executor</node>
+    <node x="2366.4124455063716" y="57.5">cli.commands.Commands</node>
+    <node x="1586.9124455063711" y="789.0">cli.commands.External</node>
+    <node x="72.91244550637111" y="319.0">cli.commands.Command</node>
+    <node x="3617.912445506371" y="766.0">cli.commands.Grep</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="cli.commands.Echo" target="cli.commands.AbstractCommand">
+      <point x="0.0" y="-30.5" />
+      <point x="967.912445506371" y="676.0" />
+      <point x="2230.474945506371" y="676.0" />
+      <point x="-158.4375" y="53.5" />
+    </edge>
+    <edge source="cli.commands.Cat" target="cli.commands.AbstractCommand">
+      <point x="-128.66666666666652" y="-30.5" />
+      <point x="2463.2457788397046" y="746.0" />
+      <point x="2399.474945506371" y="746.0" />
+      <point x="10.5625" y="53.5" />
+    </edge>
+    <edge source="cli.commands.Assignment" target="cli.commands.AbstractCommand">
+      <point x="128.66666666666663" y="-30.5" />
+      <point x="2314.5791121730376" y="746.0" />
+      <point x="2378.349945506371" y="746.0" />
+      <point x="-10.5625" y="53.5" />
+    </edge>
+    <edge source="cli.commands.External" target="cli.commands.AbstractCommand">
+      <point x="0.0" y="-30.5" />
+      <point x="1779.9124455063711" y="716.0" />
+      <point x="2314.974945506371" y="716.0" />
+      <point x="-73.9375" y="53.5" />
+    </edge>
+    <edge source="cli.commands.AbstractCommand" target="cli.commands.Command">
+      <point x="-140.83333333333326" y="-53.5" />
+      <point x="2248.079112173038" y="489.0" />
+      <point x="420.312445506371" y="489.0" />
+      <point x="154.39999999999986" y="65.0" />
+    </edge>
+    <edge source="cli.Parser.NameAndArgs" target="cli.Parser">
+      <point x="56.33333333333326" y="18.0" />
+      <point x="291.49577883970437" y="1054.0" />
+      <point x="294.3053026492282" y="1054.0" />
+      <point x="44.85714285714289" y="-88.0" />
+    </edge>
+    <edge source="cli.commands.Factory.ThrowingCtor" target="cli.commands.Factory">
+      <point x="63.25" y="30.5" />
+      <point x="691.6624455063711" y="923.0" />
+      <point x="2047.2656354795445" y="923.0" />
+      <point x="-97.70833333333348" y="-30.5" />
+    </edge>
+    <edge source="cli.commands.Exit" target="cli.commands.AbstractCommand">
+      <point x="-128.66666666666652" y="-30.5" />
+      <point x="3275.2457788397046" y="706.0" />
+      <point x="2483.9749455063716" y="706.0" />
+      <point x="95.06250000000023" y="53.5" />
+    </edge>
+    <edge source="cli.commands.Pwd" target="cli.commands.AbstractCommand">
+      <point x="128.66666666666652" y="-30.5" />
+      <point x="1502.5791121730376" y="706.0" />
+      <point x="2293.849945506371" y="706.0" />
+      <point x="-95.0625" y="53.5" />
+    </edge>
+    <edge source="cli.commands.Wc" target="cli.commands.AbstractCommand">
+      <point x="0.0" y="-53.5" />
+      <point x="2997.912445506371" y="716.0" />
+      <point x="2462.849945506371" y="716.0" />
+      <point x="73.9375" y="53.5" />
+    </edge>
+    <edge source="cli.commands.Grep" target="cli.commands.AbstractCommand">
+      <point x="2.2737367544323206E-13" y="-53.5" />
+      <point x="3810.912445506371" y="666.0" />
+      <point x="2547.3499455063716" y="666.0" />
+      <point x="158.43750000000023" y="53.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.3772773279352227" x="2038.0" y="751.0" />
+  <SelectedNodes>
+    <node>cli.commands.AbstractCommand</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Methods</Category>
+    <Category>Inner Classes</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

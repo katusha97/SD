@@ -2,15 +2,20 @@ package cli;
 
 import cli.exceptions.WrongArgumentsException;
 
+import java.io.InputStream;
 import java.util.*;
 
+import static cli.Utils.getString;
+
 /**
+ * В это классе обобщена вся работа с аргументами.
  * Класс, который хранит информацию об аргументах команды. Главная функция - get. Она обрабатывает
  * ситуации с переменными, одинарными и двойными кавычками.
+ * Также при создании объекта этого класса происходит подстановка переменных.
  */
 public class Arguments {
 
-    private String execute(String arg, Map<String, String> varDict) throws Exception {
+    private InputStream execute(String arg, Map<String, String> varDict) throws Exception {
         Executor executor = new Executor(varDict);
         return executor.execute(arg, System.in);
     }
@@ -35,7 +40,7 @@ public class Arguments {
                     if (rightBound == -1) {
                         throw new WrongArgumentsException(") is missing");
                     }
-                    ans.append(execute(arg.substring(i + 1, rightBound), varDict));
+                    ans.append(getString(execute(arg.substring(i + 1, rightBound), varDict)));
                     i = rightBound + 1;
                     continue;
                 }
@@ -62,7 +67,7 @@ public class Arguments {
         return ans.toString();
     }
 
-    public Arguments(List<String> args, Map<String, Integer> getKeyValueNumber) throws WrongArgumentsException {
+    public Arguments(List<String> args, Map<String, Integer> keyValueNumber) throws WrongArgumentsException {
         List<String> argsUsually = new ArrayList<>();
         Map<String, List<String>> keyValue = new HashMap<>();
         int i = 0;
@@ -73,13 +78,13 @@ public class Arguments {
                 continue;
             }
             String currKey = args.get(i);
-            if (!getKeyValueNumber.containsKey(currKey)) {
+            if (!keyValueNumber.containsKey(currKey)) {
                 argsUsually.add(args.get(i));
                 i++;
                 continue;
             }
             List<String> argsForCurrKey = new ArrayList<>();
-            int count = getKeyValueNumber.get(currKey);
+            int count = keyValueNumber.get(currKey);
             int j = i + 1;
             int k = 0;
             while (k < count && j < args.size()) {

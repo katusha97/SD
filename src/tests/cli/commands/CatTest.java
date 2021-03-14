@@ -1,23 +1,16 @@
 package cli.commands;
 
-import cli.Arguments;
 import org.junit.jupiter.api.Test;
+import static cli.Utils.getString;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class CatTest {
-
-    static String getString(InputStream input) {
-        return new BufferedReader(new InputStreamReader(input))
-                .lines()
-                .collect(Collectors.joining("\n"));
-    }
 
     @Test
     void call() throws Exception {

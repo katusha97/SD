@@ -10,7 +10,7 @@ import java.util.Map;
 class Echo extends AbstractCommand {
 
     public Echo(final List<String> s) throws WrongArgumentsException {
-        super(s, "echo");
+        super(s, Commands.echo);
     }
 
     @Override
@@ -24,10 +24,5 @@ class Echo extends AbstractCommand {
             }
         }
         return new ByteArrayInputStream(string.toString().getBytes());
-    }
-
-    @Override
-    public Map<String, Integer> getKeyValueNumber() {
-        return null;
     }
 }

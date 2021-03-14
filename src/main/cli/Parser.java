@@ -1,5 +1,6 @@
 package cli;
 
+import cli.commands.Commands;
 import cli.commands.Factory;
 import cli.exceptions.EmptyCommandException;
 import cli.commands.Command;
@@ -38,22 +39,21 @@ public class Parser {
                 List<String> args = new ArrayList<>();
                 args.add(splited[0].strip());
                 args.add(splited[1].strip());
-                commandList.add(factory.create("assignment", args));
-            } else if (token.length() > 2
-                    && ((token.charAt(0) == '.' && token.charAt(1) == '/') || token.charAt(0) == '/')) {
+                commandList.add(factory.create(Commands.assignment, args));
+            } else if (isPresent(splitNameAndArgs(token).name) == null) {
                 NameAndArgs nameAndArgs = splitNameAndArgs(token);
                 String name = nameAndArgs.name;
                 List<String> args = new ArrayList<>();
                 args.add(name);
                 List<String> parsedArgs = parseArgs(nameAndArgs.args);
                 args.addAll(parsedArgs);
-                commandList.add(factory.create("script", args));
+                commandList.add(factory.create(Commands.external, args));
             } else {
                 NameAndArgs nameAndArgs = splitNameAndArgs(token);
                 String name = nameAndArgs.name;
                 String sub = nameAndArgs.args;
                 List<String> args = parseArgs(sub);
-                commandList.add(factory.create(name, args));
+                commandList.add(factory.create(isPresent(name), args));
             }
         }
         return commandList;
@@ -66,6 +66,14 @@ public class Parser {
     private static class NameAndArgs {
         String name = "";
         String args = "";
+    }
+
+    private static Commands isPresent(String str) {
+        for (Commands com : Commands.values()) {
+            if (com.name().equals(str))
+                return com;
+        }
+        return null;
     }
 
     private NameAndArgs splitNameAndArgs(String token) {

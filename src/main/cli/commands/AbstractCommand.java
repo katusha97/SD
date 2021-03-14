@@ -3,20 +3,19 @@ package cli.commands;
 import cli.Arguments;
 import cli.exceptions.WrongArgumentsException;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 abstract class AbstractCommand implements Command {
 
-    AbstractCommand(List<String> args, String name) throws WrongArgumentsException {
+    AbstractCommand(List<String> args, Commands name) throws WrongArgumentsException {
         this.name = name;
         this.args = new Arguments(args, getKeyValueNumber());
     }
 
     @Override
-    public String getName() {
+    public Commands getName() {
         return name;
     }
 
@@ -25,6 +24,11 @@ abstract class AbstractCommand implements Command {
         return args;
     }
 
+    @Override
+    public Map<String, Integer> getKeyValueNumber() {
+        return new HashMap<>();
+    }
+
     protected final Arguments args;
-    private final String name;
+    private final Commands name;
 }

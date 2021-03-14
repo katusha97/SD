@@ -4,7 +4,6 @@ import cli.Arguments;
 import cli.exceptions.WrongArgumentsException;
 
 import java.io.InputStream;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -28,7 +27,7 @@ public interface Command {
     /**
      * @return имя команды
      */
-    String getName();
+    Commands getName();
 
     /**
      * @return аргументы команды

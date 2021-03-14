@@ -6,18 +6,11 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
+import static cli.Utils.getString;
 import static org.junit.jupiter.api.Assertions.*;
 
 class GrepTest {
-
-    static String getString(InputStream input) {
-        return new BufferedReader(new InputStreamReader(input))
-                .lines()
-                .collect(Collectors.joining("\n"));
-    }
 
     @Test
     void callI() throws Exception {

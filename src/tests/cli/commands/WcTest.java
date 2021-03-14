@@ -1,7 +1,5 @@
 package cli.commands;
 
-import cli.Arguments;
-import cli.commands.Wc;
 import cli.exceptions.NoSuchFileOrDirectoryException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -10,15 +8,9 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.stream.Collectors;
+import static cli.Utils.getString;
 
 class WcTest {
-
-    static String getString(InputStream input) {
-        return new BufferedReader(new InputStreamReader(input))
-                .lines()
-                .collect(Collectors.joining("\n"));
-    }
 
     @Test
     void call() throws Exception {

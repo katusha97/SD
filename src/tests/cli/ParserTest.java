@@ -1,5 +1,6 @@
 package cli;
 
+import cli.commands.Commands;
 import cli.commands.Factory;
 import cli.commands.Command;
 import cli.exceptions.EmptyCommandException;
@@ -28,7 +29,7 @@ class ParserTest {
             String string = "./test.sh 5 6 x";
             List<Command> listCommand = parser.parse(string);
             Command command = listCommand.get(0);
-            assertEquals("script", command.getName());
+            assertEquals(Commands.external, command.getName());
             List<String> test = new ArrayList<>();
             test.add("./test.sh");
             test.add("5");

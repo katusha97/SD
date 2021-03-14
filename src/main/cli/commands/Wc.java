@@ -14,7 +14,7 @@ import java.util.Map;
 class Wc extends AbstractCommand {
 
     public Wc(final List<String> s) throws WrongArgumentsException {
-        super(s, "wc");
+        super(s, Commands.wc);
     }
 
     private String getAns(InputStream input) throws IOException {
@@ -80,10 +80,5 @@ class Wc extends AbstractCommand {
                     .append("total");
         }
         return new ByteArrayInputStream(res.toString().getBytes());
-    }
-
-    @Override
-    public Map<String, Integer> getKeyValueNumber() {
-        return null;
     }
 }

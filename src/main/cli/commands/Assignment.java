@@ -9,7 +9,7 @@ import java.util.Map;
 class Assignment extends AbstractCommand {
 
     public Assignment(final List<String> args) throws WrongArgumentsException {
-        super(args, "assignment");
+        super(args, Commands.assignment);
     }
 
     @Override
@@ -17,10 +17,5 @@ class Assignment extends AbstractCommand {
             throws Exception, WrongArgumentsException {
         dictVal.put(args.get(0, dictVal), args.get(1, dictVal));
         return InputStream.nullInputStream();
-    }
-
-    @Override
-    public Map<String, Integer> getKeyValueNumber() {
-        return null;
     }
 }

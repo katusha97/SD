@@ -10,7 +10,7 @@ import java.util.Map;
 class Cat extends AbstractCommand {
 
     public Cat(final List<String> args) throws WrongArgumentsException {
-        super(args, "cat");
+        super(args, Commands.cat);
     }
 
     @Override
@@ -20,10 +20,5 @@ class Cat extends AbstractCommand {
             return input;
         }
         return new FileInputStream(args.get(0, dictVal));
-    }
-
-    @Override
-    public Map<String, Integer> getKeyValueNumber() {
-        return null;
     }
 }

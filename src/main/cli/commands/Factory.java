@@ -1,12 +1,10 @@
 package cli.commands;
 
-import cli.Arguments;
 import cli.exceptions.WrongArgumentsException;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.function.Function;
 
 /**
  * Фабрика для создания и добавления команд.
@@ -21,13 +19,13 @@ public class Factory {
 
     public Factory() {
         this.map = new HashMap<>();
-        map.put("cat", Cat::new);
-        map.put("echo", Echo::new);
-        map.put("pwd", Pwd::new);
-        map.put("wc", Wc::new);
-        map.put("exit", Exit::new);
-        map.put("assignment", Assignment::new);
-        map.put("script", Script::new);
+        map.put(Commands.cat, Cat::new);
+        map.put(Commands.echo, Echo::new);
+        map.put(Commands.pwd, Pwd::new);
+        map.put(Commands.wc, Wc::new);
+        map.put(Commands.exit, Exit::new);
+        map.put(Commands.assignment, Assignment::new);
+        map.put(Commands.external, External::new);
     }
 
     /**
@@ -35,9 +33,9 @@ public class Factory {
      * @param args Агрументы команды
      * @return Созданную команду
      */
-    public Command create(final String name, final List<String> args) throws WrongArgumentsException {
+    public Command create(final Commands name, final List<String> args) throws WrongArgumentsException {
         return map.get(name).create(args);
     }
 
-    private final Map<String, ThrowingCtor> map;
+    private final Map<Commands, ThrowingCtor> map;
 }
