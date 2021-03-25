@@ -1,0 +1,6 @@
+.idea
+target
+SD.iml
+build
+.gradle/
+out/
