@@ -33,6 +33,25 @@ class GrepTest {
     }
 
     @Test
+    void call() throws Exception {
+        String string = "Hello world!";
+        List<String> l = new ArrayList<>();
+        File f = new File("test.txt");
+        BufferedWriter writer = new BufferedWriter(new FileWriter(f));
+        writer.write(string);
+        writer.close();
+        String forSearch = "Hello";
+        l.add(forSearch);
+        l.add(f.getName());
+        Grep g = new Grep(l);
+        InputStream ans = g.call(InputStream.nullInputStream(), new HashMap<>());
+        f.delete();
+        String text = getString(ans);
+        String right = "Hello world!";
+        assertEquals(right, text);
+    }
+
+    @Test
     void callA() throws Exception {
         List<String> l = new ArrayList<>();
         File f = new File("test.txt");

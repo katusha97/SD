@@ -1,5 +1,6 @@
 package cli;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 import static cli.Utils.getString;
@@ -15,7 +16,7 @@ public class Main {
             try {
                 System.out.println(getString(executor.execute(inputString, System.in)));
             } catch (Exception e) {
-                System.err.println(e.getMessage());
+                System.err.println(e.getMessage() + Arrays.toString(e.getStackTrace()));
             }
         }
     }

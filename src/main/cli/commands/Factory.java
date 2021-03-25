@@ -26,6 +26,7 @@ public class Factory {
         map.put(Commands.exit, Exit::new);
         map.put(Commands.assignment, Assignment::new);
         map.put(Commands.external, External::new);
+        map.put(Commands.grep, Grep::new);
     }
 
     /**
